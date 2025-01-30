@@ -1,0 +1,46 @@
+[package]
+authors     = ["lxl66566 <lxl66566@gmail.com>"]
+default-run = "app"
+description = "A Tauri Solid TypeScript Tailwind Vite App Template"
+edition     = "2021"
+license     = "MIT"
+name        = "app"
+version     = "0.1.0"
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+crate-type = ["staticlib", "cdylib", "rlib"]
+name       = "app_lib"
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+tauri-build = { version = "2.0.5", features = [] }
+
+[dependencies]
+atomic_float = "1.1.0"
+clap         = { version = "4.5.27", features = ["derive"] }
+cpal         = "0.15"
+ringbuf      = "0.4"
+serde        = { version = "1.0", features = ["derive"] }
+tauri        = { version = "2.2.5", features = ["tray-icon"] }
+
+[features]
+custom-protocol = ["tauri/custom-protocol"]
+default         = ["custom-protocol"]
+
+[profile.dev]
+incremental = true # Compile your binary in smaller steps.
+
+[profile.release]
+codegen-units = 1       # Compile crates one after another so the compiler can optimize better
+lto           = true    # Enables link to optimizations
+opt-level     = "s"     # Optimize for binary size. Use `3` if you prefer speed.
+panic         = "abort" # Strip expensive panic clean-up logic
+strip         = true    # Automatically strip symbols from the binary
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-global-shortcut = "2"

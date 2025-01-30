@@ -1,0 +1,35 @@
+{
+  "name": "tauri-solid-tailwind-ts-vite-template",
+  "version": "2.0.0",
+  "author": "AR10",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "tauri": "tauri",
+    "preview": "vite preview",
+    "prettier": "prettier src -c",
+    "prettier:fix": "prettier src -w",
+    "lint:check": "eslint src",
+    "lint": "eslint src --fix"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@solidjs/router": "0.15.2",
+    "lightningcss": "1.28.2",
+    "tailwind-scrollbar-hide": "2.0.0",
+    "tailwindcss": "4.0.0",
+    "typescript": "5.7.2",
+    "vite": "6.0.7",
+    "vite-plugin-solid": "2.11.0",
+    "vite-tsconfig-paths": "5.1.4"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "4.0.0",
+    "@tauri-apps/api": "2.2.0",
+    "@tauri-apps/cli": "2.2.1",
+    "@tauri-apps/plugin-global-shortcut": "2.2.0",
+    "solid-js": "1.9.3"
+  },
+  "packageManager": "pnpm@9.15.2+sha512.93e57b0126f0df74ce6bff29680394c0ba54ec47246b9cf321f0121d8d9bb03f750a705f24edc3c1180853afd7c2c3b94196d0a3d53d3e069d9e2793ef11f321"
+}
