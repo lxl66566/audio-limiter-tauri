@@ -18,7 +18,8 @@
         "transparent": false,
         "resizable": false,
         "title": "音量控制",
-        "visible": false
+        "visible": false,
+        "alwaysOnTop": true
       }
     ],
     "security": {

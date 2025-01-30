@@ -104,6 +104,13 @@ pub fn run() {
         )
         .setup(move |app| {
             let window = app.get_webview_window("main").unwrap();
+            // 设置窗口位置（因为未知原因没法将窗口设在每次点击托盘的鼠标位置）
+            window
+                .set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(
+                    1400, 900,
+                )))
+                .unwrap();
+
             let last_click_time = Mutex::new(Instant::now() - Duration::from_secs(1));
             let _tray = TrayIconBuilder::new()
                 .icon(app.default_window_icon().unwrap().clone())
@@ -119,11 +126,7 @@ pub fn run() {
                             return;
                         }
                         *last_click_time = Instant::now();
-                        window
-                            .set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(
-                                1400, 900,
-                            )))
-                            .unwrap();
+
                         if !window.is_visible().unwrap() {
                             _ = window.show();
                         } else {
