@@ -1,4 +1,4 @@
-# Audio-Limiter-tauri
+# Loudness Normalization tauri app
 
 [简体中文](../README.md) | English
 
@@ -7,13 +7,13 @@ This is a real-time audio loudness equalization program based on the [ebur128](h
 ## Usage
 
 ```bash
-audio-limiter list                # List all audio devices
-audio-limiter -i "xxx" -o "xxx"   # Start with the given input and output devices
+loudness-normalization list                # List all audio devices
+loudness-normalization -i "xxx" -o "xxx"   # Start with the given input and output devices
 ```
 
 Then left-click the tray icon to open the window for volume control.
 
-Generally, you need to install [vb cable](https://vb-audio.com/Cable/), and then set `CABLE Input (VB-Audio Virtual Cable)` as the default output device in Windows audio settings. The default input for audio-limiter should be set to `CABLE Output (VB-Audio Virtual Cable)`, and the output to your speakers.
+Generally, you need to install [vb cable](https://vb-audio.com/Cable/), and then set `CABLE Input (VB-Audio Virtual Cable)` as the default output device in Windows audio settings. The default input for loudness-normalization should be set to `CABLE Output (VB-Audio Virtual Cable)`, and the output to your speakers.
 
 ## Development
 

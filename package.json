@@ -1,5 +1,5 @@
 {
-  "name": "audio-limiter-tauri",
+  "name": "loudness-normalization-tauri",
   "version": "0.2.0",
   "author": "lxl66566",
   "type": "module",
