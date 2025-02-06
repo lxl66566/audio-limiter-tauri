@@ -16,9 +16,7 @@ use tauri::{Emitter, Manager};
 
 use tauri_plugin_global_shortcut::{Code, GlobalShortcutExt, Shortcut, ShortcutState};
 
-pub static VOLUME: AtomicF32 = AtomicF32::new(-20.0); // 默认音量值为-20
-pub const DEFAULT_ATTACK: f32 = 25.0;
-pub const DEFAULT_RELEASE: f32 = 50.0;
+pub static VOLUME: AtomicF32 = AtomicF32::new(-23.0); // 默认目标响度为 -23 LUFS (EBU R128 标准)
 
 #[tauri::command]
 fn get_volume() -> f32 {
@@ -62,7 +60,7 @@ pub fn run() {
     let audio_volume_up_shortcut = Shortcut::new(None, Code::AudioVolumeUp);
     let audio_volume_down_shortcut = Shortcut::new(None, Code::AudioVolumeDown);
 
-    set_volume(cli.threshold as f32);
+    set_volume(cli.target_loudness as f32);
     let devices = get_devices();
     let input_device = devices
         .iter()
@@ -82,7 +80,12 @@ pub fn run() {
                 cli.output_device.as_ref().unwrap()
             )
         });
-    let _res = streaming::create_stream(input_device, output_device, cli.threshold as f32);
+    let _res = streaming::create_stream(
+        input_device,
+        output_device,
+        cli.target_loudness as f32,
+        cli.debug,
+    );
 
     tauri::Builder::default()
         .plugin(

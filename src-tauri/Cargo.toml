@@ -5,7 +5,7 @@ description = "A Tauri Solid TypeScript Tailwind Vite App Template"
 edition     = "2021"
 license     = "MIT"
 name        = "app"
-version     = "0.1.0"
+version     = "0.2.0"
 
 [lib]
 # The `_lib` suffix may seem redundant but it is necessary
@@ -22,8 +22,10 @@ tauri-build = { version = "2.0.5", features = [] }
 
 [dependencies]
 atomic_float = "1.1.0"
-clap         = { version = "4.5.27", features = ["derive"] }
+clap         = { version = "4.5.28", features = ["derive"] }
 cpal         = "0.15"
+ebur128      = "0.1.10"
+plotters     = "0.3"
 ringbuf      = "0.4"
 serde        = { version = "1.0", features = ["derive"] }
 tauri        = { version = "2.2.5", features = ["tray-icon"] }

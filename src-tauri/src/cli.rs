@@ -12,10 +12,13 @@ pub struct Cli {
     /// output device name
     #[arg(short, long)]
     pub output_device: Option<String>,
-    /// initial threshold
+    /// initial target loudness
     #[arg(short, long)]
     #[arg(default_value = "-20")]
-    pub threshold: i32,
+    pub target_loudness: i32,
+    /// only for debugging, enable this will break the audio output quality.
+    #[arg(short, long)]
+    pub debug: bool,
 }
 
 #[derive(Subcommand)]
